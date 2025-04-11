@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "../../css/DesktopCard.module.css";
+import styles from "../../css/Desktopcard.module.css";
 import library from "../../images/library.jpg";
 import { LocationIcon } from "../svgs/index";
 

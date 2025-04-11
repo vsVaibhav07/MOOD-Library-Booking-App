@@ -99,9 +99,10 @@ const getErrorMessage = (errorCode) => {
               <button className="text-black text-3xl" type="submit">
                 <  IoSearchOutline/>
               </button>
+              <button className="text-black font-medium mx-2 bg-gray-300 px-2 py-1 rounded-md" onClick={getLocation}>Near me</button>
               
             </form> 
-            <button className={styles.NearMebtn} onClick={getLocation}>Near me</button>
+            
         </div>
       </div>
     </>
