@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../../css/desktopcard.module.css";
 import library from "../../images/library.jpg";
-import { LocationIcon } from "../svgs/index";
+import { VscLocation } from "react-icons/vsc";
 
 function DesktopCard() {
   return (
@@ -28,7 +28,7 @@ function DesktopCard() {
        
                  <div className={styles.locationDetails}>
                    <span className={styles.locationIcon}>
-                     <LocationIcon/>
+                     <VscLocation/>
                    </span>
                    <span className={styles.locationName}>
                      Shivaji nagar, kamta chinhat

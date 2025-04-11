@@ -87,7 +87,7 @@ const getErrorMessage = (errorCode) => {
         <div className={styles.herobarInsideDiv}>
           <div className={styles.HerobarTitleNdescription}>
             <div className={styles.title}>
-            Set Your MOOD, Set Your Success
+            Set Your  <p className="pl-3 text-[bg-[#FABC3F]"> MOOD</p>, Set Your Success
             </div>
             <div className={styles.description}>
             find best library that suits you and provide best result that fits you    
