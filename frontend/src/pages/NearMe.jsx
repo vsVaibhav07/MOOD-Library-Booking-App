@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import { LocationIcon , DotIcon } from './Svgs'
+// import { LocationIcon , DotIcon } from './svgs'
 import { useLocation } from "react-router-dom";
 import Navbar from '../components/common/Navbar';
 import NearMeCard from '../components/libraryDetail/NearMeCard';
