@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 import EditButton from "../buttons/EditButton";
-import SaveButton from "../Buttons/SaveButton";
+import SaveButton from "../buttons/SaveButton";
 import styles from "../../css/profile.module.css";
 
 function Profile() {
