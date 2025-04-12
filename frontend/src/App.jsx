@@ -20,7 +20,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login/*" element={<Login />} />
+      <Route path="/login/" element={<Login />} />
       <Route path="/usersignup" element={<UserSignup />} />
       <Route path="/businessSignup" element={<BusinessSignup />} />
       <Route path="/emailverify" element={<EmailVerify  verificationEndpoint="/emailverify" />} />
