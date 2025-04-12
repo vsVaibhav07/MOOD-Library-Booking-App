@@ -4,14 +4,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "../css/userlogin.css";
 
 function Usersignup() {
-  // using navigate to navigate from one react component to another
   const navigate = useNavigate();
-
-  // Taking the details of the users
   const [inputData, setInputData] = useState({});
+
   const handleinput = (e) => {
     setInputData({
       ...inputData,
@@ -30,11 +27,11 @@ function Usersignup() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(useremail)) {
-      toast.error("Enter a valid email address."); // to check valid email address
+      toast.error("Enter a valid email address.");
       return;
     }
 
-    const mobileRegex = /^\d{10}$/; // Matches exactly 10 digits
+    const mobileRegex = /^\d{10}$/;
     if (!mobileRegex.test(mobile_no)) {
       toast.error("Mobile number must be a 10-digit number.");
       return;
@@ -45,91 +42,85 @@ function Usersignup() {
         "BACKEND_URL8000/usersignup", inputData
       );
 
-      // Success response
-      toast.success("Otp has been send to: " + response.data.email);
+      toast.success("Otp has been sent to: " + response.data.email);
       if (response.data) {
         navigate("/emailverify", { state: { email: useremail } });
       }
-    }
-     catch (error) {
-      // Handling errors if request fails
-
+    } catch (error) {
       if (error.response) {
-        // Server responded with an error (e.g., 400 or 500 status code)
         toast.error("Error: " + error.response.data);
-      } 
-      else if (error.request) {
-        // No response from server (e.g., network issues , can't connect to server)
+      } else if (error.request) {
         toast.error("No response from server.");
-      } 
-      else {
-        // Some other error occurred (e.g., bad request or configuration issues)
+      } else {
         toast.error("Something went wrong: " + error.message);
       }
     }
   };
 
   return (
-    <>
-      <div className=" full-user-login-body  ">
-        <div className="outer-user-login-div">
-          <div className="inner-userlogin-div">
-            <h1>Welcome</h1>
-            <div className="form-terms">
-              <form onSubmit={handlesubmit}>
-                <input
-                  type="text"
-                  name="username"
-                  placeholder="Name"
-                  pattern="[A-Za-z ]+"
-                  title="Name must only contain alphabetic characters and spaces"
-                  onChange={handleinput}
-                />
-                <input
-                  type="email"
-                  name="useremail"
-                  placeholder="Email id"
-                  onChange={handleinput}
-                />
-                <input
-                  type="number"
-                  name="mobile_no"
-                  placeholder="Mobile"
-                  onChange={handleinput}
-                />
-                <input
-                  type="text"
-                  name="city"
-                  placeholder="City"
-                  onChange={handleinput}
-                />
+    <div className="flex justify-center items-center w-full h-screen px-4">
+      <div className="bg-white flex justify-center items-center p-10 rounded-[10px] border border-[#b3b3b3] max-w-[500px] w-full">
+        <div className="w-[400px]">
+          <h1 className="text-[36px] font-medium mb-2">Welcome</h1>
 
-                <div className="terms">
-                  <FontAwesomeIcon
-                    icon={faCheckSquare}
-                    className="login-checkbox-icon"
-                  />
-                  <p>
-                    By logging in, you agree to our Privacy policy and Terms &
-                    Conditions.
-                  </p>
-                </div>
-                <button type="submit" className="btn-user-submit">
-                  Register Now
-                </button>
-              </form>
-            </div>
+          <div className="flex flex-col gap-[10px] justify-center items-center my-8">
+            <form onSubmit={handlesubmit} className="flex flex-col gap-[20px] w-full">
+              <input
+                type="text"
+                name="username"
+                placeholder="Name"
+                pattern="[A-Za-z ]+"
+                title="Name must only contain alphabetic characters and spaces"
+                onChange={handleinput}
+                className="text-[18px] h-[50px] rounded-[10px] border border-[#b3b3b3] px-[15px] bg-white w-full outline-none font-normal"
+              />
+              <input
+                type="email"
+                name="useremail"
+                placeholder="Email id"
+                onChange={handleinput}
+                className="text-[18px] h-[50px] rounded-[10px] border border-[#b3b3b3] px-[15px] bg-white w-full outline-none font-normal"
+              />
+              <input
+                type="number"
+                name="mobile_no"
+                placeholder="Mobile"
+                onChange={handleinput}
+                className="text-[18px] h-[50px] rounded-[10px] border border-[#b3b3b3] px-[15px] bg-white w-full outline-none font-normal"
+              />
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                onChange={handleinput}
+                className="text-[18px] h-[50px] rounded-[10px] border border-[#b3b3b3] px-[15px] bg-white w-full outline-none font-normal"
+              />
 
-            <div className="haveaccount">
-              <p>Have an account ?</p>
-              <Link to={"/login"} className="tosigninpage">
-                Sign in
-              </Link>
-            </div>
+              <div className="flex items-start gap-2 text-sm text-[#4d4d4d]">
+                <FontAwesomeIcon icon={faCheckSquare} className="w-[12px] h-[12px] flex-shrink-0 mt-1" />
+                <p>
+                  By logging in, you agree to our Privacy policy and Terms & Conditions.
+                </p>
+              </div>
+
+              <button
+                type="submit"
+                className="text-[20px] h-[55px] w-full max-w-[400px] rounded-[10px] bg-[#6439ff] text-white mb-5 flex justify-center items-center"
+              >
+                Register Now
+              </button>
+            </form>
+          </div>
+
+          <div className="flex items-center gap-2 mt-2">
+            <p className="text-[18px] text-black font-normal">Have an account?</p>
+            <Link to="/login" className="text-[20px] text-[#6439ff] hover:text-[#fabc3f] font-medium">
+              Sign in
+            </Link>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

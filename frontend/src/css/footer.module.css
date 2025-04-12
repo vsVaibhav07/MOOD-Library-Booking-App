@@ -55,6 +55,13 @@ align-items: center;
 gap: 100px;
 }
 
+@media (max-width: 480px) {
+      .ContactNEmail {
+       flex-direction: column;
+            gap: 20px;
+      }
+}
+
 .ContactNIcon , .EmailNicon{
       display: flex;
       align-items: center;

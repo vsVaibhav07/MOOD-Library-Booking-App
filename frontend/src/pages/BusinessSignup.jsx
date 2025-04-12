@@ -4,14 +4,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "../css/userlogin.css";
 
 function BusinessSignup() {
-  // using navigate to navigate from one react component to another
   const navigate = useNavigate();
-
-  // Taking the details of the users
   const [inputData, setInputData] = useState({});
+
   const handleinput = (e) => {
     setInputData({
       ...inputData,
@@ -30,11 +27,11 @@ function BusinessSignup() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(useremail)) {
-      toast.error("Enter a valid email address."); // to check valid email address
+      toast.error("Enter a valid email address.");
       return;
     }
 
-    const mobileRegex = /^\d{10}$/; // Matches exactly 10 digits
+    const mobileRegex = /^\d{10}$/;
     if (!mobileRegex.test(mobile_no)) {
       toast.error("Mobile number must be a 10-digit number.");
       return;
@@ -46,97 +43,93 @@ function BusinessSignup() {
         inputData
       );
 
-      // Success response
-      toast.success("Otp has been send to: " + response.data.email);
+      toast.success("Otp has been sent to: " + response.data.email);
       if (response.data) {
         navigate("/emailverify", { state: { email: useremail } });
       }
-    }
-     catch (error) {
-      // Handling errors if request fails
-
+    } catch (error) {
       if (error.response) {
-        // Server responded with an error (e.g., 400 or 500 status code)
         toast.error("Error: " + error.response.data);
-      } 
-      else if (error.request) {
-        // No response from server (e.g., network issues , can't connect to server)
+      } else if (error.request) {
         toast.error("No response from server.");
-      } 
-      else {
-        // Some other error occurred (e.g., bad request or configuration issues)
+      } else {
         toast.error("Something went wrong: " + error.message);
       }
     }
   };
 
   return (
-    <>
-      <div className=" full-user-login-body  ">
-        <div className="outer-user-login-div">
-          <div className="inner-userlogin-div">
-            <h1>Welcome</h1>
-            <div className="form-terms">
-              <form onSubmit={handlesubmit}>
-              <input
-                  type="text"
-                  name="libraryname"
-                  placeholder="Library Name"
-                  onChange={handleinput}
-                />
-                <input
-                  type="text"
-                  name="username"
-                  placeholder="Name"
-                  pattern="[A-Za-z ]+"
-                  title="Name must only contain alphabetic characters and spaces"
-                  onChange={handleinput}
-                />
-                <input
-                  type="email"
-                  name="useremail"
-                  placeholder="Email id"
-                  onChange={handleinput}
-                />
-                <input
-                  type="number"
-                  name="mobile_no"
-                  placeholder="Mobile"
-                  onChange={handleinput}
-                />
-                <input
-                  type="text"
-                  name="city"
-                  placeholder="City"
-                  onChange={handleinput}
-                />
+    <div className="flex justify-center items-center w-full h-screen bg-gray-100">
+      <div className="bg-white p-10 border border-gray-400 rounded-xl max-w-md w-full">
+        <div className="w-full">
+          <h1 className="text-3xl font-medium mb-8 text-center">Welcome</h1>
 
-                <div className="terms">
-                  <FontAwesomeIcon
-                    icon={faCheckSquare}
-                    className="login-checkbox-icon"
-                  />
-                  <p>
-                    By logging in, you agree to our Privacy policy and Terms &
-                    Conditions.
-                  </p>
-                </div>
-                <button type="submit" className="btn-user-submit">
-                  Register Now
-                </button>
-              </form>
+          <form onSubmit={handlesubmit} className="flex flex-col gap-5 items-center">
+            <input
+              type="text"
+              name="libraryname"
+              placeholder="Library Name"
+              onChange={handleinput}
+              className="w-full text-base h-[50px] px-4 rounded-lg border border-gray-400 outline-none"
+            />
+            <input
+              type="text"
+              name="username"
+              placeholder="Name"
+              pattern="[A-Za-z ]+"
+              title="Name must only contain alphabetic characters and spaces"
+              onChange={handleinput}
+              className="w-full text-base h-[50px] px-4 rounded-lg border border-gray-400 outline-none"
+            />
+            <input
+              type="email"
+              name="useremail"
+              placeholder="Email id"
+              onChange={handleinput}
+              className="w-full text-base h-[50px] px-4 rounded-lg border border-gray-400 outline-none"
+            />
+            <input
+              type="number"
+              name="mobile_no"
+              placeholder="Mobile"
+              onChange={handleinput}
+              className="w-full text-base h-[50px] px-4 rounded-lg border border-gray-400 outline-none"
+            />
+            <input
+              type="text"
+              name="city"
+              placeholder="City"
+              onChange={handleinput}
+              className="w-full text-base h-[50px] px-4 rounded-lg border border-gray-400 outline-none"
+            />
+
+            <div className="flex items-start gap-2 mt-2">
+              <FontAwesomeIcon icon={faCheckSquare} className="w-3 h-3 mt-1" />
+              <p className="text-sm text-gray-600">
+                By logging in, you agree to our Privacy policy and Terms & Conditions.
+              </p>
             </div>
 
-            <div className="haveaccount">
-              <p>Have an account ?</p>
-              <Link to={"/login"} className="tosigninpage">
-                Sign in
-              </Link>
-            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#6439ff] text-white text-lg py-3 mt-4 rounded-lg hover:bg-indigo-700 transition-all"
+            >
+              Register Now
+            </button>
+          </form>
+
+          <div className="flex justify-center items-center gap-2 mt-6">
+            <p className="text-base text-black">Have an account?</p>
+            <Link
+              to="/login"
+              className="text-lg text-[#6439ff] font-medium hover:text-yellow-400 transition"
+            >
+              Sign in
+            </Link>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
