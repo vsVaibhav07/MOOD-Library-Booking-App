@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import NearMe from "./pages/NearMe";
 import UploadImages from "./pages/UploadImages";
 import UserSignup from "./pages/UserSignup";
+import Prices from "./pages/Prices";
 
 
 axios.defaults.withCredentials = true;
@@ -29,6 +30,7 @@ function App() {
       <Route path="/docs" element={<Dashboard />} />
       <Route path="*" element={<Home />} />
       <Route path="/nearme" element={<NearMe />} />
+  
      
 
 
