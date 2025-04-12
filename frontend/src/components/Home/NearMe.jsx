@@ -65,7 +65,7 @@ const NearMe = () => {
     <>
       <button
         type="button"
-        className="text-black font-medium mx-2 bg-gray-300 px-2 py-1 rounded-md"
+        className="text-black inline w-24 pr-1 sm:pr-2 font-medium mx-2 h-7 bg-gray-300 px-2 rounded-md"
         onClick={getLocation}
       >
         Near me

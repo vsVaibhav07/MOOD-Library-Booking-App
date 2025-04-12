@@ -32,8 +32,8 @@ const LibrariesNearYou = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold text-center my-6">Libraries Near You</h2>
-      <div className="w-[90%] mx-auto">
+      <h2 className="text-3xl ml-10 font-bold my-6">Recommended Libraries</h2>
+      <div className="w-[95%] mx-auto">
         <Suspense fallback={<div>Loading...</div>}>
           <Slider {...settings}>
             {[...Array(14)].map((_, idx) => (

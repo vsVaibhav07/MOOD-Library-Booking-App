@@ -44,11 +44,11 @@ const TrendingLibraries = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-semibold text-center my-6">Trending Libraries</h2>
+      <h2 className="text-3xl ml-10 font-bold my-6">Trending Libraries</h2>
       <div className="w-[95%] mx-auto">
         <Suspense fallback={<div>Loading...</div>}>
           <Slider {...settings}>
-            {[...Array(8)].map((_, idx) => (
+            {[...Array(12)].map((_, idx) => (
               <div key={idx} className="px-2">
                 <LibraryCard />
               </div>

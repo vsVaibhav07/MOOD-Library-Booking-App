@@ -5,6 +5,11 @@ align-items: center;
 gap: 24px;
 align-self: stretch;
 }
+@media (max-width: 640px) {
+      .getIntouchDiv {
+        flex-direction: column;
+      }
+    }
 
 .image{
       display: flex;
