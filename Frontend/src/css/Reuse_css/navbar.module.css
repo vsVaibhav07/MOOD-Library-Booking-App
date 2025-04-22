@@ -115,7 +115,7 @@
 }
 
 .downArrow {
-  stroke-width: 1.5px;
+  strokeWidth: 1.5px;
   stroke: #FFF;
   transition: transform 0.3s ease; /* Smooth arrow transition */
 }
